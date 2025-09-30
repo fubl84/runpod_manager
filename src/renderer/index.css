@@ -1,0 +1,204 @@
+@import "tailwindcss";
+
+@theme {
+  --color-macos-blue: #007AFF;
+  --color-macos-red: #FF3B30;
+}
+
+@variant dark (&:where(.dark, .dark *));
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* macOS native scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+  background-clip: padding-box;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  background-clip: padding-box;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+  background-clip: padding-box;
+}
+
+/* macOS button styles - Consistent 28px height for all buttons */
+.btn-primary {
+  height: 28px;
+  padding: 0 16px;
+  background-color: #007AFF;
+  color: white;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background-color 100ms;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary:hover {
+  background-color: #0051D5;
+}
+
+.btn-primary:active {
+  background-color: #004DBD;
+}
+
+.btn-primary:focus {
+  outline: 2px solid rgba(0, 122, 255, 0.5);
+  outline-offset: 2px;
+}
+
+.btn-secondary {
+  height: 28px;
+  padding: 0 16px;
+  background-color: white;
+  color: #374151;
+  border: 1px solid #D1D5DB;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 100ms;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-secondary:hover {
+  background-color: #F9FAFB;
+}
+
+.btn-secondary:active {
+  background-color: #F3F4F6;
+}
+
+.btn-secondary:focus {
+  outline: 2px solid rgba(0, 122, 255, 0.5);
+  outline-offset: 2px;
+}
+
+.dark .btn-secondary {
+  background-color: #374151;
+  color: #D1D5DB;
+  border-color: #4B5563;
+}
+
+.dark .btn-secondary:hover {
+  background-color: #4B5563;
+}
+
+.dark .btn-secondary:active {
+  background-color: #6B7280;
+}
+
+.btn-danger {
+  height: 28px;
+  padding: 0 16px;
+  background-color: #FF3B30;
+  color: white;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background-color 100ms;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-danger:hover {
+  background-color: #FF2D20;
+}
+
+.btn-danger:active {
+  background-color: #E6291C;
+}
+
+.btn-danger:focus {
+  outline: 2px solid rgba(255, 59, 48, 0.5);
+  outline-offset: 2px;
+}
+
+.input-macos {
+  height: 28px;
+  padding: 0 12px;
+  border: 1px solid #D1D5DB;
+  border-radius: 6px;
+  font-size: 13px;
+  background-color: white;
+  color: #111827;
+  outline: none;
+  transition: all 100ms;
+}
+
+.input-macos::placeholder {
+  color: #9CA3AF;
+}
+
+.input-macos:focus {
+  border-color: transparent;
+  outline: 2px solid rgba(0, 122, 255, 0.5);
+  outline-offset: 0;
+}
+
+.select-macos {
+  height: 28px;
+  padding: 0 2.5rem 0 12px;
+  border: 1px solid #D1D5DB;
+  border-radius: 6px;
+  font-size: 13px;
+  background-color: white;
+  color: #111827;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  transition: all 100ms;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 8px center;
+  background-repeat: no-repeat;
+  background-size: 1.25em 1.25em;
+}
+
+.select-macos:focus {
+  border-color: transparent;
+  outline: 2px solid rgba(0, 122, 255, 0.5);
+  outline-offset: 0;
+}
