@@ -1,6 +1,6 @@
 {
   "name": "runpod-manager",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "A standalone app for managing RunPod connections with integrated terminal",
   "main": "dist/main/main/index.js",
   "scripts": {
@@ -13,6 +13,10 @@
     "build:main": "tsc --project tsconfig.main.json",
     "build:preload": "tsc --project tsconfig.preload.json",
     "build:app": "npm run build && electron-builder",
+    "build:mac": "npm run build && electron-builder --mac",
+    "build:win": "npm run build && electron-builder --win",
+    "build:linux": "npm run build && electron-builder --linux",
+    "build:all": "npm run build && electron-builder -mwl",
     "preview": "vite preview",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -80,6 +84,65 @@
           ]
         }
       ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "publisherName": "Christoph Seiler"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "RunPod Manager"
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "deb",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "rpm",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "icon": "build/icon.png",
+      "category": "Development",
+      "description": "A standalone app for managing RunPod connections with integrated terminal",
+      "desktop": {
+        "Name": "RunPod Manager",
+        "Comment": "Manage RunPod connections with integrated terminal",
+        "Categories": "Development;Utility;"
+      }
     }
   }
 }

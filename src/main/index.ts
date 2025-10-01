@@ -9,22 +9,31 @@ let database: DatabaseService;
 let terminalService: TerminalService;
 
 function createMainWindow(): BrowserWindow {
-  const mainWindow = new BrowserWindow({
+  const platform = process.platform;
+
+  // Base window configuration (works for all platforms)
+  const windowConfig: Electron.BrowserWindowConstructorOptions = {
     width: 1200,
     height: 800,
     minWidth: 900,
     minHeight: 600,
-    titleBarStyle: 'hidden',
-    trafficLightPosition: { x: 12, y: 16 },
     backgroundColor: '#FFFFFF',
-    vibrancy: 'sidebar',
     icon: join(__dirname, '../../../build/icon.png'),
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
       preload: join(__dirname, '../../preload/index.js'),
     },
-  });
+  };
+
+  // macOS-specific styling
+  if (platform === 'darwin') {
+    windowConfig.titleBarStyle = 'hidden';
+    windowConfig.trafficLightPosition = { x: 12, y: 16 };
+    windowConfig.vibrancy = 'sidebar';
+  }
+
+  const mainWindow = new BrowserWindow(windowConfig);
 
   if (isDev) {
     mainWindow.loadURL('http://localhost:3000');
