@@ -50,10 +50,6 @@ A modern, native desktop application for managing RunPod connections with an int
 - Consistent 28px control height
 - SF Pro Text system font
 
-## 📸 Screenshots
-
-> Add your screenshots here from the `/screenshots` directory
-
 ## 🛠️ Tech Stack
 
 ### Core Technologies
